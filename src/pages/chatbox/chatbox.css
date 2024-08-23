@@ -1,0 +1,85 @@
+.chat-box{
+    background-color:var(--color-card);
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+    border-radius: .5rem;
+    overflow: hidden;
+}
+.chat-box-top{
+    width: 80%;
+    margin: 0 auto;
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: .7rem;
+    padding: 2rem 0;
+}
+.chat-box img{
+    width: 100px;
+    border-radius: 50%;
+    aspect-ratio: 1/1;
+    margin-top: .5rem;
+    border: 3px solid var(--color-primary);
+    margin-bottom: 20px;
+}
+.chat-box-bottom{
+    background-color: var(--color-bg);
+    width: 80%;
+    margin: 1rem auto;
+    padding: .8rem;
+    border-radius: .5rem;
+}
+.chat-box-bottom form{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.chat-box-bottom input{
+    width: 100%;
+    background-color: transparent;
+    color: var(--color-primary);
+    font-size: 1rem;
+}
+.chat-box-bottom label input{
+    display: none;
+}
+.popup {
+    position: fixed;
+    bottom: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color:black;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    animation: fadeInOut 3s;
+  }
+  
+  
+  @keyframes fadeInOut {
+    0% { opacity: 0; transform: translateY(10px); }
+    10% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 1; transform: translateY(0); }
+    100% { opacity: 0; transform: translateY(10px); }
+  }
+  .popup p{
+    color: black;
+  }
+
+/* Media Query */
+
+@media(max-width:768px){
+    .chat-box-top{
+        width: 90%;
+    }
+    .chat-box-bottom{
+        width: 90%;
+    }
+}
