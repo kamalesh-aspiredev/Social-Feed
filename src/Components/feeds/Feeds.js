@@ -1,15 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import Feed from "./Feed";
 import "./feeds.css";
 
-// Fake api
-import HomeFeedData from "../../FackeApis/HomeFeedData";
-// comp
-import Feed from "./Feed";
 export default function Feeds() {
+  const [posts, setPosts] = useState([]);
+
+  useEffect(() => {
+    //  load LS
+    const storedPosts = JSON.parse(localStorage.getItem("posts")) || [];
+    setPosts(storedPosts);
+  }, []);
+
+  const handleDelete = (id) => {
+    // Remove LS
+    const updatedPosts = posts.filter((post) => post.id !== id);
+    localStorage.setItem("posts", JSON.stringify(updatedPosts));
+    setPosts(updatedPosts);
+  };
+
   return (
     <div className="feeds">
-      {HomeFeedData.map((fed) => (
-        <Feed fed={fed} key={fed.key} />
+      {posts.map((post) => (
+        <Feed key={post.id} fed={post} onDelete={handleDelete} />
       ))}
     </div>
   );

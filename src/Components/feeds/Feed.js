@@ -7,26 +7,28 @@ import {
   faHeart,
   faListDots,
   faShare,
+  faTrashAlt,
 } from "@fortawesome/free-solid-svg-icons";
-//component
 import Comments from "../comments/Comments";
-// ----------
-export default function Feed({ fed }) {
-  let [openComment, setOpenComment] = useState(false);
+
+export default function Feed({ fed, onDelete }) {
+  const [openComment, setOpenComment] = useState(false);
   const [likes, setLikes] = useState(fed.likes);
   const [isLiked, setIsLiked] = useState(false);
+
   const commentHandler = () => {
     setOpenComment(!openComment);
   };
-  // for like
+
   const likeHandler = () => {
-    if (isLiked) {
-      setLikes(likes - 1);
-    } else {
-      setLikes(likes + 1);
-    }
+    setLikes(isLiked ? likes - 1 : likes + 1);
     setIsLiked(!isLiked);
   };
+
+  const deleteHandler = () => {
+    onDelete(fed.id);
+  };
+
   return (
     <div className="feed" key={fed.id}>
       <div className="top-content">
@@ -34,9 +36,8 @@ export default function Feed({ fed }) {
           <div className="user">
             <img src={fed.feedProfile} alt="" />
             <div>
-              {" "}
               <h5>{fed.name}</h5>
-              <small>1 minutes</small>
+              <small>1 minute ago</small>
             </div>
           </div>
         </Link>
@@ -46,7 +47,15 @@ export default function Feed({ fed }) {
       </div>
       <div className="mid-content">
         <p>{fed.desc}</p>
-        <img src={fed.feedImage} alt="" />
+        {fed.media && fed.media.type === "image" && (
+          <img src={fed.media.src} alt="Post content" />
+        )}
+        {fed.media && fed.media.type === "video" && (
+          <video controls>
+            <source src={fed.media.src} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        )}
       </div>
       <div className="bottom-content">
         <div className="action-item" onClick={likeHandler}>
@@ -62,11 +71,14 @@ export default function Feed({ fed }) {
         </div>
         <div className="action-item">
           <span>
-            <FontAwesomeIcon icon={faShare} />9 shares
+            <FontAwesomeIcon icon={faShare} /> 9 shares
           </span>
         </div>
+        <div className="action-item delete-item" onClick={deleteHandler}>
+          <FontAwesomeIcon icon={faTrashAlt} /> Delete
+        </div>
       </div>
-      {openComment && <Comments />}
+      {openComment && <Comments postId={fed.id} />}
     </div>
   );
 }

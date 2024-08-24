@@ -41,6 +41,13 @@ export default function Comments() {
     }
   };
 
+  // Delete From LOCAL storageee--------
+  const handleDeleteComment = (id) => {
+    // Filter out the comment with the given id
+    const updatedComments = comments.filter((comment) => comment.id !== id);
+    setComments(updatedComments);
+  };
+
   return (
     <div className="comments">
       <div className="write-box">
@@ -75,6 +82,12 @@ export default function Comments() {
               <p>{comm.CommeText}</p>
             </div>
             <small>1h</small>
+            <button
+              onClick={() => handleDeleteComment(comm.id)}
+              className="btn btn-danger"
+            >
+              Delete
+            </button>
           </div>
         </Link>
       ))}

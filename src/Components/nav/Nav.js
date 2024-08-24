@@ -6,12 +6,12 @@ import CurrentUser from "../../FackeApis/CurrentUserData";
 //font awesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faBars,
   faBell,
   faEnvelope,
   faHome,
   faSearch,
   faUser,
+  faUsersRectangle,
 } from "@fortawesome/free-solid-svg-icons";
 import DarkMode from "../darkmode/DarkMode";
 
@@ -43,8 +43,8 @@ export default function Nav() {
             <FontAwesomeIcon icon={faBell} />
           </Link>
           <DarkMode />
-          <Link to="/">
-            <FontAwesomeIcon icon={faBars} />
+          <Link to="/login">
+            <FontAwesomeIcon icon={faUsersRectangle} />
           </Link>
           <div className="user">
             <img

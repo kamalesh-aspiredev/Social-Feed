@@ -16,9 +16,11 @@ export default function Login() {
         <form className="right">
           <input type="text" placeholder="Username" />
           <input type="password" placeholder="Password" />
-          <button type="submit" className="btn">
-            Login
-          </button>
+          <Link to="/">
+            <button type="submit" className="btn">
+              Login
+            </button>
+          </Link>
         </form>
       </div>
     </div>

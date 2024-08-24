@@ -20,6 +20,7 @@
     width: 100%;
     padding: 1rem;
     color: var(--color-primary);
+    
 }
 .post-categories{
     display: flex;
@@ -31,10 +32,13 @@
 }
 .post-categories input{
     display: none;
+    
 }
 .post-categories span{
     transition: .3s ease;
+   cursor: pointer;
 }
+
 .post-categories span:hover{
     color: var(--color-primary);
 }

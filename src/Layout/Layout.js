@@ -37,7 +37,7 @@ export default function Layout() {
           element: <Home />,
         },
         {
-          path: "/profile/:id",
+          path: "profile/:id",
           element: <Profile />,
         },
         {

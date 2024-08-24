@@ -60,9 +60,11 @@ flex-direction: row-reverse;
     text-transform: capitalize;
 }
 .signup form .btn{
-    color: var(--color-primary);
+    /* color: var(--color-primary); */
     margin-top: .1rem;
     margin-bottom: 5px;
+    color: aliceblue;
+    border: 2px solid white;
 }
 @media (max-width:600px){
     .signup .card{

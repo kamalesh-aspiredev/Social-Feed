@@ -24,7 +24,7 @@
 
 }
 .feed .mid-content img{
-    max-height: 400px;
+    max-height: 300px;
     border-radius: .5rem;
     aspect-ratio: 1/1;
 }
